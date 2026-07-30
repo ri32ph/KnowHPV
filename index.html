@@ -94,7 +94,7 @@
       ["キャッチアップ接種について","国のキャッチアップ接種と経過措置による公費接種は、2026年3月31日で終了しました。接種歴が分からないときや、今後の接種について知りたいときは、自治体または医療機関にご相談ください。"]
     ];
     function init(){
-      document.getElementById("nav").innerHTML=steps.map((s,i)=>`<button id="nav${i}" onclick="showStep(${i})"><span>${s[1]}</span><b>${s[2]}</b></button>`).join("")+`<button id="navDetails" onclick="showDetails(current)"><span>＋</span><b>詳しい情報</b></button>`;
+      document.getElementById("nav").innerHTML=steps.map((s,i)=>`<button id="nav${i}" onclick="showStep(${i})"><span>${s[1]}</span><b>${s[2]}</b></button>`).join("")+`<button id="navDetails" onclick="showDetails(current)"><span>＋</span><b>詳しい情報</b></button><button onclick="location.href='qa.html'"><span>Q</span><b>Q&amp;Aを探す</b></button><button onclick="location.href='links.html'"><span>↗</span><b>リンク集</b></button>`;
       document.getElementById("people").innerHTML="<i>●</i>".repeat(100);
       renderRoutes();renderRoad();renderQuiz();
       document.getElementById("accordion").innerHTML=parentInfo.map((x,i)=>`<div class="acc ${i===0?"open":""}"><button onclick="toggleAcc(this)"><span>0${i+1}</span><b>${x[0]}</b><i>＋</i></button><p>${x[1]}</p></div>`).join("");

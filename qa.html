@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="厚生労働省のHPVワクチンQ&Aを、気になる言葉から探せる索引です。">
+  <title>Q&Aを探す｜HPVって何？</title>
+  <link rel="icon" href="assets/favicon.png">
+  <style>
+    :root{--navy:#10235b;--ink:#172143;--cream:#fffaf0;--paper:#fffdf8;--coral:#ff6d52;--teal:#1a9a98;--line:#deddd4}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+    button,input{font:inherit}
+    .top{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:250px 1fr auto;align-items:center;gap:24px;height:72px;padding:0 max(22px,5vw);background:#fffaf0f2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .brand{color:var(--navy);font-size:13px;font-weight:900;letter-spacing:.13em;text-decoration:none}
+    .brand i{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:9px;border-radius:50%;background:var(--coral);color:#fff;font-style:normal;font-size:18px}
+    .top-title{color:#747987;font-size:13px;font-weight:800}
+    .back{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:10px 17px;background:#fff;color:var(--navy);font-size:13px;font-weight:900;text-decoration:none}
+    .layout{display:grid;grid-template-columns:190px 1fr;max-width:1400px;min-height:calc(100vh - 72px);margin:auto}
+    nav{padding:35px 14px;border-right:1px solid var(--line)}
+    nav a{display:grid;grid-template-columns:30px 1fr;align-items:center;gap:9px;width:100%;margin:4px 0;padding:9px;border-radius:12px;color:#8b8e96;font-size:11px;font-weight:800;text-decoration:none}
+    nav a span{display:grid;place-items:center;width:29px;height:29px;border:1px solid #ddd;border-radius:8px;font-size:9px}
+    nav a.active{background:#fff;color:var(--navy);box-shadow:0 8px 25px #17214312}
+    nav a.active span{background:var(--navy);border-color:var(--navy);color:#fff}
+    main{width:min(980px,100%);margin:0 auto;padding:64px 42px 90px}
+    .eyebrow{color:var(--teal);font-size:11px;font-weight:900;letter-spacing:.18em}
+    h1{margin:14px 0 18px;color:var(--navy);font-size:clamp(38px,6vw,68px);line-height:1.15;letter-spacing:-.04em}
+    h1 em{color:var(--coral);font-style:normal}
+    .lead{max-width:760px;margin:0;color:#62697a;font-size:16px;line-height:1.9}
+    .notice{margin:27px 0;padding:17px 20px;border-left:4px solid var(--teal);border-radius:0 14px 14px 0;background:#eef8f6;color:#526273;font-size:14px;line-height:1.8}
+    .reference-links{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0 28px}.reference-links a{border:1px solid #e8dcd6;border-radius:99px;padding:10px 15px;background:#fff;color:var(--teal);font-size:13px;font-weight:900;text-decoration:none}
+    .finder{margin-top:26px;padding:28px;border:1px solid #eee1db;border-radius:24px;background:#fff;box-shadow:0 18px 45px #10235b0d}
+    .search{display:grid;grid-template-columns:1fr auto;gap:10px}
+    .search input{min-width:0;border:2px solid #d9dcd8;border-radius:14px;padding:16px 18px;color:var(--ink);background:var(--paper);font-size:18px;outline:none}
+    .search input:focus{border-color:var(--teal);box-shadow:0 0 0 4px #1a9a9815}
+    .search button{border:0;border-radius:14px;padding:0 23px;background:var(--navy);color:#fff;font-weight:900}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0 4px}
+    .chips button{border:1px solid #edd8d1;border-radius:99px;padding:9px 14px;background:#fff7f4;color:#9b4d3e;font-size:13px;font-weight:800}
+    .chips button:hover,.chips button:focus{background:var(--coral);color:#fff}
+    .status{margin:28px 2px 12px;color:#757a86;font-size:13px;font-weight:800}
+    .results{display:grid;gap:12px}
+    .result{display:grid;grid-template-columns:74px 1fr auto;align-items:center;gap:17px;padding:20px;border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 8px 25px #10235b08}
+    .result .number{display:grid;place-items:center;min-height:46px;border-radius:12px;background:#fff0ed;color:var(--coral);font:700 14px Georgia,serif}
+    .result small{display:block;margin-bottom:6px;color:var(--teal);font-size:11px;font-weight:900}
+    .result h2{margin:0;color:var(--navy);font-size:17px;line-height:1.55}
+    .result a{border-radius:99px;padding:11px 15px;background:var(--navy);color:#fff;font-size:12px;font-weight:900;text-decoration:none;white-space:nowrap}
+    .empty{padding:38px 20px;border:1px dashed #d6d4cc;border-radius:17px;background:#fff;text-align:center;color:#707585;line-height:1.8}
+    footer{padding:25px;text-align:center;border-top:1px solid var(--line);color:#777;font-size:11px;line-height:1.8}
+    @media(max-width:760px){
+      .top{grid-template-columns:1fr auto;padding:0 16px}.top-title{display:none}
+      .layout{display:block}nav{position:sticky;top:72px;z-index:15;display:flex;gap:5px;overflow:auto;padding:7px;background:#fffaf0f2;border-right:0;border-bottom:1px solid var(--line)}
+      nav a{width:auto;min-width:46px;margin:0;padding:6px}nav a b{display:none}
+      main{padding:42px 20px 70px}.finder{padding:18px}.search{grid-template-columns:1fr}.search button{padding:13px}
+      .result{grid-template-columns:58px 1fr}.result a{grid-column:1/-1;text-align:center}.result h2{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html"><i>H</i>ABOUT HPV</a>
+    <span class="top-title">厚生労働省 HPVワクチンQ&A 索引</span>
+    <a class="back" href="index.html">教材に戻る</a>
+  </header>
+  <div class="layout">
+    <nav aria-label="ページメニュー">
+      <a href="index.html"><span>←</span><b>教材に戻る</b></a>
+      <a class="active" href="qa.html" aria-current="page"><span>Q</span><b>Q&amp;Aを探す</b></a>
+      <a href="links.html"><span>↗</span><b>リンク集</b></a>
+    </nav>
+    <main>
+      <span class="eyebrow">OFFICIAL Q&amp;A FINDER</span>
+      <h1>気になる言葉から<br><em>Q&amp;Aを探す</em></h1>
+      <p class="lead">厚生労働省「HPVワクチンに関するQ&amp;A」の質問を、身近な言葉から探せる索引です。気になる項目を選ぶと、厚生労働省の公式ページで回答を確認できます。</p>
+      <div class="notice"><b>このページは公式Q&amp;Aへの案内ページです。</b><br>検索結果には質問の見出しだけを表示します。最新の回答や詳しい説明は、リンク先の厚生労働省ページでご確認ください。</div>
+      <div class="reference-links">
+        <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou/hpv_qa.html" target="_blank" rel="noopener">厚生労働省のQ&amp;A ↗</a>
+        <a href="https://www.know-vpd.jp/faq/hpv/" target="_blank" rel="noopener">Know VPD!のHPV Q&amp;A ↗</a>
+        <a href="links.html">関連リンクをまとめて見る →</a>
+      </div>
+      <section class="finder" aria-label="Q&A検索">
+        <form class="search" id="searchForm">
+          <input id="query" type="search" inputmode="search" autocomplete="off" placeholder="例：男、費用、副反応、何回、検診" aria-label="Q&Aを検索する言葉">
+          <button type="submit">検索する</button>
+        </form>
+        <div class="chips" aria-label="おすすめの検索語">
+          <button type="button" data-word="男">男の子・男性</button>
+          <button type="button" data-word="費用">費用</button>
+          <button type="button" data-word="副反応">副反応</button>
+          <button type="button" data-word="接種回数">接種回数</button>
+          <button type="button" data-word="効果">効果</button>
+          <button type="button" data-word="検診">がん検診</button>
+          <button type="button" data-word="安全性">安全性</button>
+          <button type="button" data-word="相談">相談先</button>
+          <button type="button" data-word="救済">救済制度</button>
+          <button type="button" data-word="キャッチアップ">キャッチアップ</button>
+        </div>
+      </section>
+      <p class="status" id="status" aria-live="polite"></p>
+      <div class="results" id="results"></div>
+    </main>
+  </div>
+  <footer>質問索引の出典：厚生労働省「HPVワクチンに関するQ&amp;A」（最終更新日 2026年3月25日）<br>参考情報：Know VPD!「子宮頸がんとHPVワクチンに関するQ&amp;A」／この索引は医療機関での診断・相談に代わるものではありません。</footer>
+  <script>
+    const sourceUrl="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou/hpv_qa.html";
+    const items=[
+      ["問1-1","子宮頸がん","子宮頸がんとは何ですか？","子宮けいがん 病気"],
+      ["問1-2","子宮頸がん","何が原因で子宮頸がんになるのですか？","原因 HPV 感染 性的接触"],
+      ["問1-7","HPV","ヒトパピローマウイルスとは何ですか？","HPV ウイルス 男 男性 男の子 陰茎がん 肛門がん 中咽頭がん"],
+      ["問1-8","HPV","ヒトパピローマウイルスはどれくらい感染しやすいものですか？","感染 身近 確率"],
+      ["問1-9","HPV","ヒトパピローマウイルスに感染すると必ずがんになるのですか？","感染 がん 自然に治る 免疫"],
+      ["問2-1","予防","子宮頸がんを予防する方法はありますか？","予防 ワクチン 検診"],
+      ["問2-2","検診","子宮頸がん検診はどのようなものですか？","検診 がん検診 細胞診 20歳"],
+      ["問2-3","接種","HPVワクチンの接種はどのようなものですか？","定期接種 公費 無料 費用 対象年齢 女子 9価"],
+      ["問2-4","相談先","HPVワクチンの接種場所など、必要な情報はどこに問い合わせたらよいですか？","相談 問い合わせ 医療機関 自治体 接種場所 費用"],
+      ["問2-5","意思決定","HPVワクチンは絶対に受けなければならないものですか？","強制 必須 受けない 同意 本人 保護者"],
+      ["問2-6","接種回数","HPVワクチンは何回接種すればよいですか、またその接種方法はどのようにすれば良いですか？","回数 何回 間隔 スケジュール 2回 3回"],
+      ["問2-7","ワクチンの種類","2価・4価ワクチンで接種を開始し、完了していない場合はどうすればよいですか？","2価 4価 9価 シルガード9 途中 種類"],
+      ["問2-8","対象年齢","定期接種の対象年齢を過ぎてからでも接種できますか？","年齢 対象 過ぎた 費用 自費"],
+      ["問2-9","接種間隔","1回または2回接種してから1年を過ぎた場合、次の接種はどうすればよいですか？","間隔 1年 遅れた 回数 スケジュール"],
+      ["問2-10","効果","HPVワクチンはどれくらい効くのですか？","効果 予防 9価"],
+      ["問2-11","海外","海外でのHPVワクチンの使用状況を教えてください。","海外 世界 使用状況"],
+      ["問2-12","検診","子宮頸がん検診とHPVワクチンは両方受けなければいけませんか？","検診 ワクチン 両方 必要"],
+      ["問2-13","効果","HPVワクチンについて、がんを予防する効果は証明されていないのですか？","効果 がん予防 エビデンス 根拠"],
+      ["問2-14","接種後の症状","HPVワクチンは痛いのですか？","痛み 注射 副反応"],
+      ["問2-15","副反応","HPVワクチン接種後に副反応はありますか？","副反応 副作用 痛み 腫れ 赤み 発熱"],
+      ["問2-16","接種後の症状","接種後に報告されている「多様な症状」はどのようなものですか？","多様な症状 痛み 動かしにくい 副反応"],
+      ["問2-17","相談先","接種後に気になる症状が出た場合、どこに相談すればよいですか？","相談 医療機関 症状 副反応"],
+      ["問2-18","接種時の注意","HPVワクチンを受ける際に注意することはありますか？","注意 妊娠 持病 服装"],
+      ["問2-19","接種後の注意","HPVワクチン接種後に注意することはありますか？","接種後 注意 運動 入浴 症状"],
+      ["問2-20","安全性","予防接種されるワクチンの安全性はどのようにチェックしていますか？","安全性 審査 監視 モニタリング"],
+      ["問2-21","救済制度","接種後に体調が悪くなり医療機関を受診した場合、救済などはありますか？","救済制度 健康被害 医療費 相談"],
+      ["問2-22","費用","任意接種として受けたシルガード9の費用の払い戻しを受けることはできますか？","費用 払い戻し 償還払い お金 自費"],
+      ["問3-1","医療体制","接種後に生じた症状に対する診療体制はどうなっていますか？","医療体制 協力医療機関 相談 症状"],
+      ["問4-1","キャッチアップ","接種を逃した方に、あらためて接種の機会が設けられていたのはなぜですか？","キャッチアップ 接種機会 対象"],
+      ["問5-1","接種勧奨","接種対象者への積極的な勧奨が差し控えられていたのはなぜですか？","積極的勧奨 差し控え 経緯"]
+    ].map(([no,category,title,keywords])=>({no,category,title,keywords}));
+
+    const normalize=value=>value.normalize("NFKC").toLowerCase().replace(/\s+/g,"");
+    const query=document.getElementById("query");
+    const results=document.getElementById("results");
+    const status=document.getElementById("status");
+
+    function officialLink(item){
+      const exact=item.no+". "+item.title;
+      return sourceUrl+"#:~:text="+encodeURIComponent(exact);
+    }
+    function render(value=""){
+      const word=normalize(value);
+      const aliases={男性:"男",男子:"男",男児:"男",お金:"費用",値段:"費用",副作用:"副反応",何回:"接種回数",子宮けいがん:"子宮頸がん"};
+      const expanded=normalize(aliases[value.trim()]||value);
+      const found=word?items.filter(item=>{
+        const text=normalize([item.no,item.category,item.title,item.keywords].join(" "));
+        return text.includes(word)||text.includes(expanded);
+      }):items.slice(0,8);
+      status.textContent=word?`「${value.trim()}」の検索結果：${found.length}件`:"よく調べられている質問";
+      if(!found.length){
+        results.innerHTML='<div class="empty"><b>一致する質問が見つかりませんでした。</b><br>言葉を短くするか、「費用」「副反応」「相談」などで試してみてください。</div>';
+        return;
+      }
+      results.innerHTML=found.map(item=>`
+        <article class="result">
+          <span class="number">${item.no}</span>
+          <div><small>${item.category}</small><h2>${item.title}</h2></div>
+          <a href="${officialLink(item)}" target="_blank" rel="noopener">公式の回答を見る ↗</a>
+        </article>`).join("");
+    }
+    document.getElementById("searchForm").addEventListener("submit",event=>{event.preventDefault();render(query.value)});
+    query.addEventListener("input",()=>render(query.value));
+    document.querySelectorAll("[data-word]").forEach(button=>button.addEventListener("click",()=>{
+      query.value=button.dataset.word;render(query.value);query.focus();
+    }));
+    render();
+  </script>
+</body>
+</html>
